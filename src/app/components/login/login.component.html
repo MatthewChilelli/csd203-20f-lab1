@@ -1,0 +1,16 @@
+
+ 
+ <ion-item>
+  <ion-label for="usere"><b>Email</b></ion-label>
+  <ion-input type="email" placeholder="Enter Email" name="email" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+  <ion-label for="pass"><b>Password</b></ion-label>
+  <ion-input type="password" placeholder="Enter Password" name="password" required></ion-input>
+  </ion-item>
+
+ 
+  <ion-button (click)="signIn()"> Login </ion-button>
+
+    <h1 *ngIf="auth.isLoggedIn()" >   Hi, how are ya?  </h1>

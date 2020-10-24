@@ -2,15 +2,18 @@
  
  <ion-item>
   <ion-label for="usere"><b>Email</b></ion-label>
-  <ion-input type="email" placeholder="Enter Email" name="email" required></ion-input>
+  <ion-input [(ngModel)]="email" type="email" placeholder="Enter Email" name="email" required></ion-input>
   </ion-item>
 
   <ion-item>
   <ion-label for="pass"><b>Password</b></ion-label>
-  <ion-input type="password" placeholder="Enter Password" name="password" required></ion-input>
+  <ion-input [(ngModel)]="password"  type="password" placeholder="Enter Password" name="password" required></ion-input>
   </ion-item>
 
  
   <ion-button (click)="signIn()"> Login </ion-button>
+  <button (click)="signInWithGoogle()">Sign In with Google</button>
+  <ion-button routerLink="/user-benefits"> Benefit </ion-button>
 
     <h1 *ngIf="auth.isLoggedIn()" >   Hi, how are ya?  </h1>
+    <h1 *ngIf="auth.isLoggedIn()">You are signed in as {{auth.getUserData().email}}!</h1>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,9 +9,23 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  signIn() {this.auth.signInWithEmail();}
+  email: string = "";
+ password: string = "";
 
-  constructor(private auth: AuthService) { }
+  signIn() {this.auth.signInWithEmail(this.email, this.password)
+    .then((result) => {
+      this.router.navigate(["/user-profile"], {queryParams: { id: 1 }});
+    })
+    .catch((error) => {
+      alert(error)
+    });
+  }
+
+  signInWithGoogle() {
+    this.auth.signInWithGooglePopUp();
+    }
+
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {}
 
